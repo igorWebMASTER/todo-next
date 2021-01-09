@@ -1,26 +1,65 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+const GlobalStyle = createGlobalStyle`
+
+*{
+ margin: 0;
+ padding: 0;
+ outline: 0;
+ box-sizing: border-box;
+}
+
+body{
+  -webkit-font-smoothing: antialised;
+  background:#f2f2f2;
+}
+
+body, input , button{
+  font-family: 'Nunito', sans-serif;
+}
+
+#root{
+  margin: 0 auto;
+  /* padding: 0 20px 50px; */
+}
+
+button{
+  cursor: pointer;
+}
+
+
+
+
+`;
+
+import TodoForm from '../components/TodoForm';
+import TodoList from '../components/TodoList';
+
+const LOCAL_STORAGE_KEY = 'react-todo-list-todos';
+
+import { List, Container } from './styles';
 
 function index() {
-  const [input, setInput] = useState('');
-  const [todoList, setTodoList] = useState([]);
+  const [todos, setTodos] = useState([]);
 
-  function handleInputChange(e) {
-    setInput(e.target.value);
-    console.log(input);
+  useEffect(() => {
+    const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storageTodos) {
+      setTodos(storageTodos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
+
+  function addTodo(todo) {
+    setTodos([todo, ...todos]);
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setTodoList([input, ...todoList]);
-    setInput('');
-  };
-
   return (
-    <div>
-      <h1>TodoLuby</h1>
-
-      <form>
+    <>
+      {/* <form>
         <input
           type='text'
           value={input}
@@ -28,18 +67,14 @@ function index() {
           placeholder='Digite uma tarefa'
         />
         <button onClick={handleSubmit}>Adicionar</button>
-      </form>
+      </form> */}
 
-      <div>
-        <ul>
-          {todoList.length >= 1
-            ? todoList.map((todo, id) => {
-                return <li key={id}>{todo} </li>;
-              })
-            : 'Adicione um item'}
-        </ul>
-      </div>
-    </div>
+      <TodoForm addTodo={addTodo} />
+
+      <TodoList todos={todos} />
+
+      <GlobalStyle />
+    </>
   );
 }
 export default index;
