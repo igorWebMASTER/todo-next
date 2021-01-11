@@ -28,10 +28,6 @@ export const Container = styled.div`
     max-width: 460px;
     padding: 15px;
 
-    /* > div {
-      text-align: center;
-    } */
-
     .inputTask {
       display: flex;
       flex-direction: column;
@@ -43,7 +39,7 @@ export const Container = styled.div`
       background: #2e2d34;
       color: #5d5d5f;
       min-width: 250px;
-      max-width: 250px;
+      max-width: 350px;
       font-size: 14px;
       border-radius: 3px;
       padding-left: 15px;
@@ -91,20 +87,6 @@ export const Container = styled.div`
         width: 100%;
       }
     }
-  }
-
-  div > h1 {
-    font-weight: 500;
-    font-size: 22px;
-    margin-top: 10px;
-    text-align: center;
-  }
-
-  @media screen and (max-width: 760px) {
-    div {
-      width: 100%;
-    }
-
     div > h1 {
       text-align: left;
       margin: 1rem 0 0rem 1rem;

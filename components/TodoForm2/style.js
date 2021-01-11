@@ -28,10 +28,6 @@ export const Container = styled.div`
     max-width: 460px;
     padding: 15px;
 
-    /* > div {
-      text-align: center;
-    } */
-
     .inputTask {
       display: flex;
       flex-direction: column;
@@ -91,6 +87,11 @@ export const Container = styled.div`
         width: 100%;
       }
     }
+
+    div > h1 {
+      text-align: left;
+      margin: 1rem 0 0rem 1rem;
+    }
   }
 
   div > h1 {
@@ -101,13 +102,5 @@ export const Container = styled.div`
   }
 
   @media screen and (max-width: 760px) {
-    div {
-      width: 100%;
-    }
-
-    div > h1 {
-      text-align: left;
-      margin: 1rem 0 0rem 1rem;
-    }
   }
 `;
