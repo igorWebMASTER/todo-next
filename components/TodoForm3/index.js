@@ -15,20 +15,20 @@ const TodoForm2 = ({ addTodo }) => {
 
   function handleTaskInputChange(e) {
     setTodo({ ...todo, task: e.target.value });
-    setInputError('');
   }
 
   function handleSubmit(e) {
     e.preventDefault(); // prevents browser refresh
     // trim() gets rid of string whitespace
-    if (todo.task.trim() && todo.task.length > 5) {
-      addTodo({ ...todo, id: uuidv4() });
-      setTodo({ ...todo, task: '' });
-    } else {
-      setInputError('Digite uma tarefa');
+
+    if (!todo.task) {
+      setInputError('Digite uma tarefa!');
     }
 
-    setInputError('');
+    if (todo.task.trim()) {
+      addTodo({ ...todo, id: uuidv4() });
+      setTodo({ ...todo, task: '' });
+    }
   }
 
   return (
@@ -50,6 +50,11 @@ const TodoForm2 = ({ addTodo }) => {
                   placeholder='Digite uma tarefa'
                 />
                 {!!inputError ? <div className='error'>{inputError}</div> : ''}
+                {todo.task.length < 5 ? (
+                  <div className='error'>Digite ao menos 5 letras</div>
+                ) : (
+                  ''
+                )}
               </div>
               <div>
                 <button type='submit'>Adicionar</button>

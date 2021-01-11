@@ -32,7 +32,7 @@ button{
 
 `;
 
-import TodoForm from '../components/TodoForm3';
+import TodoForm from '../components/TodoForm2';
 import TodoList from '../components/TodoList';
 
 function index() {
@@ -55,17 +55,6 @@ function index() {
 
   return (
     <>
-      {/* <form>
-        <input
-          type='text'
-          value={input}
-          onChange={handleInputChange}
-          placeholder='Digite uma tarefa'
-        />
-        <button onClick={handleSubmit}>Adicionar</button>
-      </form> */}
-
-      {/* <TodoForm addTodo={addTodo} /> */}
       <TodoForm addTodo={addTodo} />
 
       {todos.length > 0 ? (
@@ -76,7 +65,6 @@ function index() {
         </div>
       )}
 
-      {/* <TodoList todos={todos} /> */}
       <GlobalStyle />
     </>
   );
