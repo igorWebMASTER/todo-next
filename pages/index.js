@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
 body{
   -webkit-font-smoothing: antialised;
-  background:#f2f2f2;
+  background:#403f4d;
 }
 
 body, input , button{
@@ -32,25 +32,21 @@ button{
 
 `;
 
-import TodoForm from '../components/TodoForm';
+import TodoForm from '../components/TodoForm3';
 import TodoList from '../components/TodoList';
-
-const LOCAL_STORAGE_KEY = 'react-todo-list-todos';
-
-import { List, Container } from './styles';
 
 function index() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const storageTodos = JSON.parse(localStorage.getItem('TodoLuby:todos'));
     if (storageTodos) {
       setTodos(storageTodos);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+    localStorage.setItem('TodoLuby:todos', JSON.stringify(todos));
   }, [todos]);
 
   function addTodo(todo) {
@@ -69,10 +65,18 @@ function index() {
         <button onClick={handleSubmit}>Adicionar</button>
       </form> */}
 
+      {/* <TodoForm addTodo={addTodo} /> */}
       <TodoForm addTodo={addTodo} />
 
-      <TodoList todos={todos} />
+      {todos.length > 0 ? (
+        <TodoList todos={todos} />
+      ) : (
+        <div style={{ textAlign: 'center' }}>
+          <h3 style={{ color: '#fff' }}>Não tem tarefas adicionadas</h3>
+        </div>
+      )}
 
+      {/* <TodoList todos={todos} /> */}
       <GlobalStyle />
     </>
   );

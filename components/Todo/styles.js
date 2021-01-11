@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 30%;
-  background: #fff;
+  width: 32%;
+  background: #4e4e5c;
+  color: #fff;
   padding-bottom: 20px;
   min-height: 40px;
   font-size: 12px;
@@ -11,20 +12,21 @@ export const Container = styled.div`
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   transition: all 400ms;
   position: relative;
-  top: -40px;
+  top: -50px;
   z-index: -1;
   border-radius: 25px;
   margin-top: 20px;
   font-size: 14px;
   margin-bottom: 10px;
-  border-radius: 50px;
+  border-radius: 3px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
 
   li:first-child {
     margin-top: 20px;
+    margin-left: 20px;
+    font-size: 1rem;
   }
 
   li:last-child {
@@ -34,5 +36,11 @@ export const Container = styled.div`
 
   li {
     list-style: none;
+  }
+
+  @media screen and (max-width: 760px) {
+    & {
+      width: 90%;
+    }
   }
 `;

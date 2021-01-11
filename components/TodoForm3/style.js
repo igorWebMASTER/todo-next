@@ -2,11 +2,10 @@ import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.div`
-  width: 50%;
-  background: #f2f2f2;
   min-height: 166px;
   font-size: 12px;
   display: flex;
+  margin: 0 auto;
   border-radius: 10px;
   margin: 40px auto;
   flex-direction: column;
@@ -14,56 +13,56 @@ export const Container = styled.div`
   align-items: center;
   transition: all 400ms;
 
-  .form-newsletter {
+  h1 {
+    font-size: 34px;
+    position: absolute;
+    top: 1.5rem;
+    color: #fff;
+  }
+
+  .formTodo {
     display: flex;
     align-content: center;
-
+    width: 100%;
+    margin: 0 auto;
+    max-width: 460px;
     padding: 15px;
-
-    form {
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-    }
 
     /* > div {
       text-align: center;
     } */
 
+    .inputTask {
+      display: flex;
+      flex-direction: column;
+    }
+
     input {
       height: 48px;
       border: 0;
-      background: white;
+      background: #2e2d34;
+      color: #5d5d5f;
       min-width: 250px;
+      max-width: 250px;
       font-size: 14px;
-      border-radius: 5px;
+      border-radius: 3px;
       padding-left: 15px;
 
       &::placeholder {
-        color: #585858;
+        color: #5d5d5f;
       }
     }
 
     button {
       height: 48px;
       border: 0;
+      width: 100%;
       color: #fff;
       font-size: 14px;
       background: #13825c;
-      min-width: 140px;
-      border-radius: 5px;
-      margin-left: 10px;
-      transition: background-color 300ms;
-      cursor: pointer;
-    }
+      min-width: 130px;
 
-    .addAgainNewsletter {
-      height: 48px;
-      border: 0;
-      color: #fff;
-      font-size: 14px;
-      background: #13825c;
-      border-radius: 5px;
+      border-radius: 3px;
       margin-left: 10px;
       transition: background-color 300ms;
       cursor: pointer;
@@ -72,10 +71,15 @@ export const Container = styled.div`
     button:hover {
       background: ${shade(0.15, '#13825c')};
     }
+
+    .error {
+      padding-top: 10px;
+      color: #ed5249;
+    }
   }
 
   @media screen and (max-width: 760px) {
-    .form-newsletter {
+    .formTodo {
       flex-direction: column;
 
       span {
@@ -85,12 +89,6 @@ export const Container = styled.div`
       button,
       input {
         width: 100%;
-        margin-top: 10px;
-        margin-left: 0px;
-      }
-
-      #name {
-        margin-bottom: 11px;
       }
     }
   }
@@ -102,21 +100,14 @@ export const Container = styled.div`
     text-align: center;
   }
 
-  .line-break {
-    display: none;
-  }
-
   @media screen and (max-width: 760px) {
     div {
       width: 100%;
     }
+
     div > h1 {
       text-align: left;
       margin: 1rem 0 0rem 1rem;
-    }
-
-    .line-break {
-      display: block;
     }
   }
 `;
